@@ -29,7 +29,7 @@ func (s *server) respond(w http.ResponseWriter, r *http.Request, data interface{
 	if data != nil {
 		err := json.NewEncoder(w).Encode(data)
 		if err != nil {
-			log.Printf("failed to encode response")
+			log.Printf("failed to encode response: %v", err)
 			http.Error(w, "Something went wrong with JSON marshalling.", http.StatusInternalServerError)
 		}
 	}
