@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"skeleton/skeleton"
+	"github.com/scharissis/go-server-skeleton/skeleton"
 )
 
 func main() {

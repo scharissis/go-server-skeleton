@@ -1,4 +1,4 @@
-module skeleton
+module github.com/scharissis/go-server-skeleton
 
 go 1.14
 
