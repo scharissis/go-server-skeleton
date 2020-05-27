@@ -18,6 +18,8 @@ func restrictMethods(h http.Handler, methods ...string) http.HandlerFunc {
 	}
 }
 
+// GetOrDefault gets environment variable 'key'.
+// If not found, returns the supplied 'fallback'.
 func GetOrDefault(key, fallback string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		return value
