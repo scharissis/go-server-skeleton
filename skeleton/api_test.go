@@ -9,17 +9,18 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/scharissis/go-server-skeleton/skeleton/numbers"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestAnswerHandler(t *testing.T) {
-	srv := NewServer(``)
+	srv := NewServer(``, numbers.NewMockClient())
 
 	t.Run("GET /answer", func(t *testing.T) {
 		got := struct {
 			Result string
 		}{}
-
+		expected := "Hello! Your lucky number is 42."
 		request := httptest.NewRequest(http.MethodGet, "/answer", nil)
 		response := httptest.NewRecorder()
 		srv.answer()(response, request)
@@ -30,7 +31,7 @@ func TestAnswerHandler(t *testing.T) {
 		}
 
 		assert.Equal(t, http.StatusOK, response.Result().StatusCode, "Status should be 200/OK")
-		assert.Equal(t, "Hello!", got.Result, "Result should be 'Hello'")
+		assert.Equal(t, expected, got.Result)
 	})
 
 	t.Run("POST /answer", func(t *testing.T) {
@@ -42,7 +43,7 @@ func TestAnswerHandler(t *testing.T) {
 		}{
 			Name: `Stefano`,
 		})
-
+		expected := "Hello, Stefano! Your lucky number is 42."
 		request := httptest.NewRequest(http.MethodPost, "/answer", sent)
 		response := httptest.NewRecorder()
 		srv.answer()(response, request)
@@ -53,7 +54,7 @@ func TestAnswerHandler(t *testing.T) {
 		}
 
 		assert.Equal(t, http.StatusOK, response.Result().StatusCode, "Status should be 200/OK")
-		assert.Equal(t, "Hello, Stefano!", got.Result, "Result should be 'Hello, Stefano!'")
+		assert.Equal(t, expected, got.Result)
 	})
 
 }

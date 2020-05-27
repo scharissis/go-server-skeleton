@@ -17,9 +17,12 @@ func (s *server) answer() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		req := request{}
 
+		// Acquire a lucky number
+		luckyNum := s.numberClient.Get()
+
 		if r.Method == http.MethodGet {
 			resp := response{
-				Result: "Hello!",
+				Result: fmt.Sprintf("Hello! Your lucky number is %d.", luckyNum),
 			}
 			s.respond(w, r, resp, http.StatusOK)
 		} else {
@@ -29,7 +32,7 @@ func (s *server) answer() http.HandlerFunc {
 			}
 
 			resp := response{
-				Result: fmt.Sprintf("Hello, %s!", req.Name),
+				Result: fmt.Sprintf("Hello, %s! Your lucky number is %d.", req.Name, luckyNum),
 			}
 			s.respond(w, r, resp, http.StatusOK)
 		}

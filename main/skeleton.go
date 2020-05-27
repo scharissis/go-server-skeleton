@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/scharissis/go-server-skeleton/skeleton"
+	"github.com/scharissis/go-server-skeleton/skeleton/numbers"
 )
 
 func main() {
@@ -20,7 +21,7 @@ func main() {
 	var wg sync.WaitGroup
 	defer wg.Wait() // application will not exit until WaitGroup empty
 
-	srv := skeleton.NewServer(apiPrefix)
+	srv := skeleton.NewServer(apiPrefix, numbers.NewClient())
 	s := &http.Server{
 		Addr:         apiPort,
 		ReadTimeout:  5 * time.Second,

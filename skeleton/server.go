@@ -6,15 +6,18 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+
+	"github.com/scharissis/go-server-skeleton/skeleton/numbers"
 )
 
 type server struct {
-	urlPrefix string
-	router    *mux.Router
+	urlPrefix    string
+	router       *mux.Router
+	numberClient numbers.Client
 }
 
-func NewServer(urlPrefix string) *server {
-	s := &server{urlPrefix: urlPrefix}
+func NewServer(urlPrefix string, nClient numbers.Client) *server {
+	s := &server{urlPrefix: urlPrefix, numberClient: nClient}
 	s.routes()
 	return s
 }

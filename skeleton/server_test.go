@@ -7,16 +7,18 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"github.com/scharissis/go-server-skeleton/skeleton/numbers"
 )
 
 func TestAnswer(t *testing.T) {
-	srv := NewServer(`/api`)
+	srv := NewServer(`/api`, numbers.NewMockClient())
 
 	t.Run("GET /answer", func(t *testing.T) {
 		got := struct {
 			Result string
 		}{}
-
+		expected := "Hello! Your lucky number is 42."
 		request, err := http.NewRequest(http.MethodGet, "http://localhost:8000/api/answer", nil)
 		if err != nil {
 			t.Fatal(err)
@@ -31,7 +33,7 @@ func TestAnswer(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, "Hello!", got.Result, "Result should be 'Hello'")
+		assert.Equal(t, expected, got.Result)
 	})
 
 	t.Run("POST /answer", func(t *testing.T) {
@@ -43,7 +45,7 @@ func TestAnswer(t *testing.T) {
 		}{
 			Name: `Stefano`,
 		})
-
+		expected := "Hello, Stefano! Your lucky number is 42."
 		request, err := http.NewRequest(http.MethodPost, "http://localhost:8000/api/answer", sent)
 		if err != nil {
 			t.Fatal(err)
@@ -58,6 +60,6 @@ func TestAnswer(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, "Hello, Stefano!", got.Result, "Result should be 'Hello'")
+		assert.Equal(t, expected, got.Result)
 	})
 }
