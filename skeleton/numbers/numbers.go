@@ -8,8 +8,7 @@ type Client interface {
 }
 
 // The real client
-type client struct {
-}
+type client struct{}
 
 func NewClient() *client {
 	return &client{}

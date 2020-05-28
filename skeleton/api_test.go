@@ -56,7 +56,6 @@ func TestAnswerHandler(t *testing.T) {
 		assert.Equal(t, http.StatusOK, response.Result().StatusCode, "Status should be 200/OK")
 		assert.Equal(t, expected, got.Result)
 	})
-
 }
 
 func AsReader(t *testing.T, s interface{}) io.Reader {
