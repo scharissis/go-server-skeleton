@@ -47,8 +47,8 @@ func runServer(port, prefix string) {
 		}
 	}()
 
+	log.Printf("Server running (port %s)...\n", port)
 	if err := s.ListenAndServe(); err != http.ErrServerClosed {
 		log.Printf("error from ListenAndServe: %v\n", err)
 	}
-	log.Printf("Server running (port %s)...\n", port)
 }
