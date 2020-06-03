@@ -2,6 +2,7 @@
 
 ![Build (Go)](<https://github.com/scharissis/go-server-skeleton/workflows/Build%20(Go)/badge.svg?branch=master>)
 [![Go Report Card](https://goreportcard.com/badge/github.com/scharissis/go-server-skeleton)](https://goreportcard.com/report/github.com/scharissis/go-server-skeleton)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/scharissis/go-server-skeleton?tab=doc)
 
 A very simple template for a golang web service.
 
