@@ -1,5 +1,7 @@
 # Skeleton Go Web Server
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/scharissis/go-server-skeleton)](https://goreportcard.com/report/github.com/scharissis/go-server-skeleton)
+
 A very simple template for a golang web service.
 
 It is opinionated and intended to act as an example of best practices.
