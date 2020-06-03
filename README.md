@@ -1,5 +1,6 @@
 # Skeleton Go Web Server
 
+![Build (Go)](<https://github.com/scharissis/go-server-skeleton/workflows/Build%20(Go)/badge.svg?branch=master>)
 [![Go Report Card](https://goreportcard.com/badge/github.com/scharissis/go-server-skeleton)](https://goreportcard.com/report/github.com/scharissis/go-server-skeleton)
 
 A very simple template for a golang web service.
