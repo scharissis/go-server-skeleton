@@ -1,13 +1,16 @@
 // An imaginary 3rd-party service which provides lucky numbers.
 package numbers
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func Test_Client_Get(t *testing.T) {
 	client := NewClient()
 
 	for i := 0; i < 1000; i++ {
-		t.Run(string(i), func(t *testing.T) {
+		t.Run(fmt.Sprint(i), func(t *testing.T) {
 			if got := client.Get(); got < 0 || got > 100 {
 				t.Errorf("Client.Get() = %v, which is outside expected range.", got)
 			}
